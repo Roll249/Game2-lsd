@@ -2,6 +2,7 @@
 
 1.Xem video sau và cho biết cái gì đã được nhắc đến.  
 *(clip ghim trong zalo của Hưng)*  
+
   \=\> Chiến lược chiến tranh đặc biệt  
 ***2\. Chiến thuật quân sự mà Mỹ áp dụng trong Chiến tranh đặc biệt là gì ?***
 
@@ -29,12 +30,11 @@
 Hãy cho biết vị đại tướng trên gợi nhắc gì tới chiến tranh đặc biệt của Mỹ tại Việt Nam  
  \=\> Lực lượng chỉ huy quân đội sài gòn
 
-***5***  
-Đáp án cho câu hỏi này gồm 11 chữ cái. Hãy cho biết đây là chính sách nào của Mỹ trong chiến tranh đặc biệt tại Việt Nam   
+***5***    
 ![][image7] ![][image8][https://vi.wikipedia.org/wiki/%E1%BA%A4p\_Chi%E1%BA%BFn\_l%C6%B0%E1%BB%A3c](https://vi.wikipedia.org/wiki/%E1%BA%A4p_Chi%E1%BA%BFn_l%C6%B0%E1%BB%A3c)  
 [https://upload.wikimedia.org/wikipedia/vi/b/b5/Ng%C3%B4\_%C4%90%C3%ACnh\_Nhu\_%E1%BB%9F\_dinh\_Gia\_Long.png](https://upload.wikimedia.org/wikipedia/vi/b/b5/Ng%C3%B4_%C4%90%C3%ACnh_Nhu_%E1%BB%9F_dinh_Gia_Long.png)
 
-Đáp án : Ấp chiến lược   
+Đáp án : Ấp chiến lược    
 6\. Đâu là thứ để lại nhiều hệ luỵ mà Mỹ đã gây ra cho Việt Nam sau chiến tranh.  
  ![][image9]![][image10]![][image11]![][image12]
 
