@@ -744,96 +744,108 @@
 
             <!-- Media ở giữa -->
             <div class="media-container">
-                <div style="display: flex; gap: 15px; justify-content: center; align-items: center; flex-wrap: wrap;">
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; justify-items: center; align-items: center;">
+                    <div style="text-align: center;">
+                        <img src="https://thanhnien.mediacdn.vn/Uploaded/caotung/2022_08_07/ca-si-mono-2225.jpg"
+                            alt="Hình ảnh 1"
+                            style="width: 100%; max-width: 200px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display: none; width: 200px; height: 150px; background: #f8f9fa; border: 2px dashed #ccc; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin: 0 auto;">
+                            <p style="color: #666; font-size: 12px;">Ảnh 1 không tải được</p>
+                        </div>
+                    </div>
+                    <div style="text-align: center;">
+                        <img src="https://png.pngtree.com/png-clipart/20210309/original/pngtree-black-number-2-png-image_5894261.jpg" 
+                             alt="Số 2" 
+                             style="width: 100%; max-width: 120px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div style="display: none; width: 80px; height: 80px; background: #333; color: white; display: flex; align-items: center; justify-content: center; border-radius: 8px; font-size: 48px; font-weight: bold; margin: 0 auto;">2</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="width: 80px; height: 80px; background: #e74c3c; color: white; display: flex; align-items: center; justify-content: center; border-radius: 8px; font-size: 24px; font-weight: bold; margin: 0 auto;">Dioxin</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <img src="https://image-assets.eu-2.volcanic.cloud/api/v1/assets/images/a7a28c050a29c857d31b3b421d4eb1d0?size=600x400>" 
+                             alt="Hình ảnh 4" 
+                             style="width: 100%; max-width: 200px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div style="display: none; width: 80px; height: 80px; background: #f39c12; color: white; display: flex; align-items: center; justify-content: center; border-radius: 8px; font-size: 16px; font-weight: bold; margin: 0 auto; text-align: center;">Hình 4</div>
+                    </div>
                 </div>
-                <div style="text-align: center;">
-                    <img src="https://thanhnien.mediacdn.vn/Uploaded/caotung/2022_08_07/ca-si-mono-2225.jpg"
-                        alt="Hình ảnh 1"
-                        style="width: 100%; max-width: 200px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"
-                        onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                </div>
-                <div style="text-align: center;">
-                    <img src="https://e7.pngegg.com/pngimages/313/595/png-clipart-x-mark-check-mark-cross-sign-x-mark-miscellaneous-angle.png"
-                        alt="Hình ảnh 2"
-                        style="width: 100%; max-width: 200px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"
-                        onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                </div>
-                <div style="text-align: center;">
-                    <img src="https://png.pngtree.com/png-clipart/20210309/original/pngtree-black-number-2-png-image_5894261.jpg"
-                        alt="Số 2"
-                        style="width: 100%; max-width: 120px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"
-                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                </div>
-                <div style="text-align: center;">
-                    <div
-                        style="width: 80px; height: 80px; background: #e74c3c; color: white; display: flex; align-items: center; justify-content: center; border-radius: 8px; font-size: 24px; font-weight: bold; margin: 0 auto;">
-                        Dioxin</div>
-                </div>
-                <div style="text-align: center;">
-                    <img src="https://image-assets.eu-2.volcanic.cloud/api/v1/assets/images/a7a28c050a29c857d31b3b421d4eb1d0?size=600x400>"
-                        alt="Hình ảnh 4"
-                        style="width: 100%; max-width: 200px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"
-                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div style="text-align: center; margin-top: 15px; font-style: italic; color: #666;">
+                    <p><strong>Hệ lụy để lại từ chiến tranh</strong></p>
+                    <p style="color: #e74c3c;">⚠️ Tác động lâu dài đến môi trường và sức khỏe con người</p>
                 </div>
             </div>
-        </div>
 
-        <!-- Đáp án đúng và nút bấm ở dưới -->
-        <div class="answer-section">
-            <div class="correct-answer">
-                <strong>🎯 Đáp án đúng: Chất dioxin</strong>
+            <!-- Đáp án đúng và nút bấm ở dưới -->
+            <div class="answer-section">
+                <div class="correct-answer">
+                    <strong>🎯 Đáp án đúng: Chất dioxin</strong>
+                </div>
+                <div class="answer-buttons">
+                    <button class="btn-correct" onclick="answerCorrect(6)">✅ ĐÚNG</button>
+                    <button class="btn-wrong" onclick="answerWrong(6)">❌ SAI</button>
+                </div>
             </div>
-            <div class="answer-buttons">
-                <button class="btn-correct" onclick="answerCorrect(6)">✅ ĐÚNG</button>
-                <button class="btn-wrong" onclick="answerWrong(6)">❌ SAI</button>
+
+            <!-- Thông báo chuyển đổi -->
+            <div class="transition-message">⏱️ Đang chuyển sang vòng đặt cược tiếp theo...</div>
+
+            <div id="nextQuestion6Btn" style="display: none;"></div>
+        </div>
+
+        <!-- Trang câu hỏi 7 -->
+        <div id="question7Page" class="page">
+            <div class="current-question">Câu hỏi 7/7</div>
+
+            <!-- Tên câu hỏi ở trên cùng -->
+            <h2>7. Cho biết đây là sự kiện gì và diễn ra trong khoảng thời gian nào</h2>
+
+            <!-- Hiển thị nhóm đang trả lời -->
+            <div class="current-team-display">
+                <strong>🎯 Đội đang trả lời: <span id="answeringTeam7">Đội 1</span></strong><br>
+                <strong>💰 Số điểm cược: <span id="betAmount7">50</span> điểm</strong>
             </div>
-        </div>
 
-        <!-- Thông báo chuyển đổi -->
-        <div class="transition-message">⏱️ Đang chuyển sang vòng đặt cược tiếp theo...</div>
-
-        <div id="nextQuestion6Btn" style="display: none;"></div>
-    </div>
-
-    <!-- Trang câu hỏi 7 -->
-    <div id="question7Page" class="page">
-        <div class="current-question">Câu hỏi 7/7</div>
-
-        <!-- Tên câu hỏi ở trên cùng -->
-        <h2>7. Cho biết đây là sự kiện gì và diễn ra trong khoảng thời gian nào</h2>
-
-        <!-- Hiển thị nhóm đang trả lời -->
-        <div class="current-team-display">
-            <strong>🎯 Đội đang trả lời: <span id="answeringTeam7">Đội 1</span></strong><br>
-            <strong>💰 Số điểm cược: <span id="betAmount7">50</span> điểm</strong>
-        </div>
-
-        <!-- Media ở giữa -->
-        <<div class="media-container">
-            <div style="text-align: center;">
-
-                <p style="font-weight: bold; color: #A0956B; margin-top: 10px;">Các bạn xem vở kịch sau để tra lời câu hỏi</p>
-
+            <!-- Media ở giữa -->
+            <div class="media-container">
+                <div style="display: flex; gap: 20px; justify-content: center; align-items: center; flex-wrap: wrap;">
+                    <div style="flex: 1; min-width: 300px; text-align: center;">
+                        <h4 style="margin-bottom: 10px; color: #A0956B;">Sự kiện lịch sử</h4>
+                        <div style="width: 100%; max-width: 300px; height: 200px; background: #f8f9fa; border: 2px dashed #ccc; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin: 0 auto;">
+                            <p style="color: #666; font-style: italic;">Hình ảnh sự kiện đảo chính</p>
+                        </div>
+                    </div>
+                    <div style="flex: 1; min-width: 300px; text-align: center;">
+                        <h4 style="margin-bottom: 10px; color: #A0956B;">Nhân vật liên quan</h4>
+                        <div style="width: 100%; max-width: 300px; height: 200px; background: #f8f9fa; border: 2px dashed #ccc; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin: 0 auto;">
+                            <p style="color: #666; font-style: italic;">Hình ảnh Dương Văn Minh</p>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 15px; font-style: italic; color: #666;">
+                    <p><strong>Sự kiện quan trọng trong lịch sử Việt Nam</strong></p>
+                    <p style="color: #e74c3c;">📅 Một ngày chuyển folding trong lịch sử chính trị</p>
+                </div>
             </div>
-    </div>
-    </div>
 
-    <!-- Đáp án đúng và nút bấm ở dưới -->
-    <div class="answer-section">
-        <div class="correct-answer">
-            <strong>🎯 Đáp án đúng: 1/11/1963, Dương Văn Minh đảo chính lật đổ chính quyền Diệm</strong>
+            <!-- Đáp án đúng và nút bấm ở dưới -->
+            <div class="answer-section">
+                <div class="correct-answer">
+                    <strong>🎯 Đáp án đúng: 1/11/1963, Dương Văn Minh đảo chính lật đổ chính quyền Diệm</strong>
+                </div>
+                <div class="answer-buttons">
+                    <button class="btn-correct" onclick="answerCorrect(7)">✅ ĐÚNG</button>
+                    <button class="btn-wrong" onclick="answerWrong(7)">❌ SAI</button>
+                </div>
+            </div>
+
+            <!-- Thông báo chuyển đổi -->
+            <div class="transition-message">🎉 Trò chơi kết thúc! Đang chuyển sang trang kết quả...</div>
+
+            <div id="nextQuestion7Btn" style="display: none;"></div>
         </div>
-        <div class="answer-buttons">
-            <button class="btn-correct" onclick="answerCorrect(7)">✅ ĐÚNG</button>
-            <button class="btn-wrong" onclick="answerWrong(7)">❌ SAI</button>
-        </div>
-    </div>
-
-    <!-- Thông báo chuyển đổi -->
-    <div class="transition-message">🎉 Trò chơi kết thúc! Đang chuyển sang trang kết quả...</div>
-
-    <div id="nextQuestion7Btn" style="display: none;"></div>
-    </div>
 
     <!-- Trang kết quả -->
     <div id="resultsPage" class="page">
