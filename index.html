@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game 2: Đặt Cược Trí Tuệ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,8 +16,8 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, 'Times New Roman', sans-serif;
+            background: url('image.png') center/cover no-repeat;
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -28,9 +32,11 @@
 
         .page {
             display: none;
-            background: white;
+            background: rgba(250, 248, 240, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 40px rgba(139, 119, 101, 0.2);
             padding: 40px;
             text-align: center;
             animation: fadeIn 0.5s ease-in-out;
@@ -41,45 +47,56 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         h1 {
-            color: #333;
+            color: #8B7765;
             font-size: 3em;
             margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            text-shadow: 2px 2px 4px rgba(139, 119, 101, 0.3);
         }
 
         h2 {
-            color: #555;
+            color: #A0956B;
             font-size: 2em;
             margin-bottom: 15px;
         }
 
         .welcome-text {
             font-size: 1.5em;
-            color: #666;
+            color: #A0956B;
             margin-bottom: 30px;
             line-height: 1.6;
         }
 
         .btn {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
-            border: none;
+            background: linear-gradient(135deg, #D4C4A0 0%, #A0956B 100%);
+            color: #5D4E37;
+            border: 1px solid rgba(160, 149, 107, 0.3);
             padding: 15px 30px;
             font-size: 1.2em;
+            font-weight: 600;
             border-radius: 50px;
             cursor: pointer;
             margin: 10px;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 8px 25px rgba(160, 149, 107, 0.3);
         }
 
         .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(160, 149, 107, 0.4);
+            background: linear-gradient(135deg, #E6D6B3 0%, #B8A978 100%);
         }
 
         .rules {
@@ -89,11 +106,12 @@
         }
 
         .rules h3 {
-            color: #667eea;
+            color: #A0956B;
             margin: 20px 0 10px 0;
         }
 
-        .rules p, .rules li {
+        .rules p,
+        .rules li {
             line-height: 1.6;
             margin-bottom: 10px;
         }
@@ -110,28 +128,29 @@
         }
 
         .team-card {
-            background: #f8f9fa;
+            background: rgba(248, 246, 238, 0.8);
+            border: 1px solid rgba(212, 196, 160, 0.3);
+            backdrop-filter: blur(5px);
             border-radius: 15px;
             padding: 20px;
-            border: 3px solid transparent;
             transition: all 0.3s ease;
         }
 
         .team-card.leader {
-            border-color: #28a745;
-            background: #d4edda;
+            border: 2px solid #A0956B;
+            background: rgba(212, 196, 160, 0.3);
         }
 
         .team-name {
             font-size: 1.3em;
             font-weight: bold;
             margin-bottom: 10px;
-            color: #333;
+            color: #8B7765;
         }
 
         .team-points {
             font-size: 2em;
-            color: #667eea;
+            color: #A0956B;
             font-weight: bold;
             margin-bottom: 15px;
         }
@@ -148,14 +167,15 @@
 
         .bet-input:focus {
             outline: none;
-            border-color: #667eea;
+            border-color: #A0956B;
         }
 
         .timer {
             font-size: 3em;
             font-weight: bold;
-            color: #e74c3c;
+            color: #B67878;
             margin: 20px 0;
+            text-shadow: 2px 2px 4px rgba(139, 119, 101, 0.3);
         }
 
         .question-container {
@@ -207,7 +227,7 @@
         }
 
         .current-question {
-            background: #667eea;
+            background: #A0956B;
             color: white;
             padding: 10px 20px;
             border-radius: 25px;
@@ -224,7 +244,9 @@
         .rank-item {
             display: flex;
             align-items: center;
-            background: #f8f9fa;
+            background: rgba(248, 246, 238, 0.8);
+            border: 1px solid rgba(212, 196, 160, 0.3);
+            backdrop-filter: blur(5px);
             padding: 15px 20px;
             margin: 10px 0;
             border-radius: 15px;
@@ -232,18 +254,21 @@
         }
 
         .rank-item:nth-child(1) {
-            background: linear-gradient(45deg, #ffd700, #ffed4e);
-            color: #333;
+            background: linear-gradient(45deg, #E6D6B3, #D4C4A0);
+            border: 2px solid #A0956B;
+            color: #5D4E37;
         }
 
         .rank-item:nth-child(2) {
-            background: linear-gradient(45deg, #c0c0c0, #e8e8e8);
-            color: #333;
+            background: linear-gradient(45deg, #D4C4A0, #B8A978);
+            border: 2px solid #8B7765;
+            color: #5D4E37;
         }
 
         .rank-item:nth-child(3) {
-            background: linear-gradient(45deg, #cd7f32, #daa520);
-            color: white;
+            background: linear-gradient(45deg, #B8A978, #A0956B);
+            border: 2px solid #8B7765;
+            color: #5D4E37;
         }
 
         .rank-number {
@@ -279,41 +304,48 @@
         }
 
         .current-team-display {
-            background: #e3f2fd;
-            border: 2px solid #2196f3;
+            background: rgba(212, 196, 160, 0.2);
+            border: 2px solid #A0956B;
             border-radius: 15px;
             padding: 15px;
             margin: 20px 0;
             font-size: 1.2em;
+            color: #5D4E37;
+            backdrop-filter: blur(3px);
         }
 
         .media-container {
             margin: 30px 0;
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
 
         .answer-section {
-            background: #f8f9fa;
+            background: rgba(248, 246, 238, 0.8);
+            border: 1px solid rgba(212, 196, 160, 0.3);
+            backdrop-filter: blur(5px);
             border-radius: 15px;
             padding: 25px;
             margin: 30px 0;
         }
 
         .correct-answer {
-            background: #d4edda;
-            border: 2px solid #28a745;
+            background: rgba(212, 196, 160, 0.2);
+            border: 2px solid #A0956B;
             border-radius: 10px;
             padding: 15px;
             margin-bottom: 20px;
             font-size: 1.3em;
-            color: #155724;
-            display: none; /* Ẩn đáp án ban đầu */
+            color: #5D4E37;
+            display: none;
+            backdrop-filter: blur(3px);
+            /* Ẩn đáp án ban đầu */
         }
 
         .correct-answer.show {
-            display: block; /* Hiển thị khi có class show */
+            display: block;
+            /* Hiển thị khi có class show */
         }
 
         .answer-buttons {
@@ -323,7 +355,8 @@
             margin-top: 20px;
         }
 
-        .btn-correct, .btn-wrong {
+        .btn-correct,
+        .btn-wrong {
             padding: 15px 30px;
             border: none;
             border-radius: 10px;
@@ -335,26 +368,35 @@
         }
 
         .btn-correct {
-            background: #28a745;
-            color: white;
+            background: linear-gradient(135deg, #B8C5A0 0%, #8FA663 100%);
+            color: #4A5A32;
+            border: 1px solid rgba(143, 166, 99, 0.3);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 8px 25px rgba(143, 166, 99, 0.3);
         }
 
         .btn-correct:hover {
-            background: #218838;
-            transform: translateY(-2px);
+            background: linear-gradient(135deg, #C7D4B0 0%, #A0B670 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(143, 166, 99, 0.4);
         }
 
         .btn-wrong {
-            background: #dc3545;
-            color: white;
+            background: linear-gradient(135deg, #D4A0A0 0%, #B67878 100%);
+            color: #5A3232;
+            border: 1px solid rgba(182, 120, 120, 0.3);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 8px 25px rgba(182, 120, 120, 0.3);
         }
 
         .btn-wrong:hover {
-            background: #c82333;
-            transform: translateY(-2px);
+            background: linear-gradient(135deg, #E3B0B0 0%, #C58888 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(182, 120, 120, 0.4);
         }
 
-        .btn-correct:disabled, .btn-wrong:disabled {
+        .btn-correct:disabled,
+        .btn-wrong:disabled {
             opacity: 0.5;
             cursor: not-allowed;
             transform: none;
@@ -378,17 +420,20 @@
         }
     </style>
 </head>
+
 <body>
-    <div class="status-bar">
+    <div class="status-bar"
+        style="background: rgba(212, 196, 160, 0.3); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(160, 149, 107, 0.3);">
         <div style="text-align: center;">
-            <span id="gameStatus">Chào mừng đến với Game 2: Đặt Cược Trí Tuệ</span>
+            <span id="gameStatus" style="color: #8B7765; font-weight: 600;">Chào mừng đến với Game 2: Đặt Cược Trí
+                Tuệ</span>
         </div>
     </div>
 
     <div class="container game-container">
         <!-- Trang chào mừng -->
         <div id="welcomePage" class="page active">
-            <h1>🎯 CHÀO MỪNG ĐÉN VỚI</h1>
+            <h1>🎯 CHÀO MỪNG ĐẾN VỚI</h1>
             <h1>GAME 2: ĐẶT CƯỢC TRÍ TUỆ</h1>
             <div class="welcome-text">
                 Trò chơi kiến thức kết hợp yếu tố đặt cược thông minh<br>
@@ -456,10 +501,10 @@
         <!-- Trang câu hỏi 1 -->
         <div id="question1Page" class="page">
             <div class="current-question">Câu hỏi 1/7</div>
-            
+
             <!-- Tên câu hỏi ở trên cùng -->
             <h2>1. Xem video sau và cho biết cái gì đã được nhắc đến.</h2>
-            
+
             <!-- Hiển thị nhóm đang trả lời -->
             <div class="current-team-display">
                 <strong>🎯 Đội đang trả lời: <span id="answeringTeam1">Đội 1</span></strong><br>
@@ -487,7 +532,7 @@
 
             <!-- Thông báo chuyển đổi -->
             <div class="transition-message">⏱️ Đang chuyển sang vòng đặt cược tiếp theo...</div>
-            
+
             <!-- Nút tự động ẩn vì game sẽ tự chuyển -->
             <div id="nextQuestion1Btn" style="display: none;"></div>
         </div>
@@ -495,10 +540,10 @@
         <!-- Trang câu hỏi 2 -->
         <div id="question2Page" class="page">
             <div class="current-question">Câu hỏi 2/7</div>
-            
+
             <!-- Tên câu hỏi ở trên cùng -->
             <h2>2. Chiến thuật quân sự mà Mỹ áp dụng trong Chiến tranh đặc biệt là gì?</h2>
-            
+
             <!-- Hiển thị nhóm đang trả lời -->
             <div class="current-team-display">
                 <strong>🎯 Đội đang trả lời: <span id="answeringTeam2">Đội 1</span></strong><br>
@@ -509,23 +554,19 @@
             <div class="media-container">
                 <div style="display: flex; gap: 20px; justify-content: center; align-items: center; flex-wrap: wrap;">
                     <div style="flex: 1; min-width: 300px;">
-                        <h4 style="text-align: center; margin-bottom: 10px; color: #667eea;">Trực thăng vận</h4>
-                        <img src="https://cdn.qdnd.vn/wp-content/uploads/2017/01/17/8-500x375.jpg" 
-                             alt="Trực thăng vận" 
-                             style="width: 100%; max-width: 400px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"
-                             onerror="this.src='question2.png'">
+                        <h4 style="text-align: center; margin-bottom: 10px; color: #A0956B;"></h4>
+                        <img src="https://file.qdnd.vn/data/images/0/2016/06/26/dieuthuy/266thuy11.jpg?w=578"
+                            style="width: 100%; max-width: 400px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"
+                            onerror="this.src='question2.png'">
                     </div>
                     <div style="flex: 1; min-width: 300px;">
-                        <h4 style="text-align: center; margin-bottom: 10px; color: #667eea;">Thiết xa vận</h4>
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/M113_Vietnam.jpg/300px-M113_Vietnam.jpg" 
-                             alt="Thiết xa vận" 
-                             style="width: 100%; max-width: 400px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"
-                             onerror="this.src='question2.png'">
+                        <h4 style="text-align: center; margin-bottom: 10px; color: #A0956B;"></h4>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f6/A_Churchill_tank_carrying_infantry_advances_towards_St_Pierre_Tarentaine%2C_Normandy%2C_3_August_1944._B8567.jpg"
+                            style="width: 100%; max-width: 400px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"
+                            onerror="this.src='question2.png'">
                     </div>
                 </div>
-                <div style="text-align: center; margin-top: 15px; font-style: italic; color: #666;">
-                    <p>Hai chiến thuật quân sự chủ yếu của Mỹ trong Chiến tranh đặc biệt</p>
-                </div>
+
             </div>
 
             <!-- Đáp án đúng và nút bấm ở dưới -->
@@ -541,17 +582,19 @@
 
             <!-- Thông báo chuyển đổi -->
             <div class="transition-message">⏱️ Đang chuyển sang vòng đặt cược tiếp theo...</div>
-            
+
             <div id="nextQuestion2Btn" style="display: none;"></div>
         </div>
 
         <!-- Trang câu hỏi 3 -->
         <div id="question3Page" class="page">
             <div class="current-question">Câu hỏi 3/7</div>
-            
+
             <!-- Tên câu hỏi ở trên cùng -->
-            <h2>3. Ai là người được coi là đại diện tiêu biểu của văn hóa Quân đội Sài Gòn?</h2>
-            
+            <h2>3. Bài hát trên nói về đội quân nào?</h2>
+            <p style="font-style: italic; color: #666; margin: 10px 0;">(gợi ý: Lực lượng của Mỹ trong một cuộc chiến
+                tranh ở VN)</p>
+
             <!-- Hiển thị nhóm đang trả lời -->
             <div class="current-team-display">
                 <strong>🎯 Đội đang trả lời: <span id="answeringTeam3">Đội 1</span></strong><br>
@@ -569,7 +612,7 @@
             <!-- Đáp án đúng và nút bấm ở dưới -->
             <div class="answer-section">
                 <div class="correct-answer">
-                    <strong>🎯 Đáp án đúng: Trần Dần</strong>
+                    <strong>🎯 Đáp án đúng: Quân đội Sài Gòn</strong>
                 </div>
                 <div class="answer-buttons">
                     <button class="btn-correct" onclick="answerCorrect(3)">✅ ĐÚNG</button>
@@ -579,17 +622,17 @@
 
             <!-- Thông báo chuyển đổi -->
             <div class="transition-message">⏱️ Đang chuyển sang vòng đặt cược tiếp theo...</div>
-            
+
             <div id="nextQuestion3Btn" style="display: none;"></div>
         </div>
 
         <!-- Trang câu hỏi 4 -->
         <div id="question4Page" class="page">
             <div class="current-question">Câu hỏi 4/7</div>
-            
+
             <!-- Tên câu hỏi ở trên cùng -->
             <h2>4. Hãy cho biết vị đại tướng trên gợi nhắc gì tới chiến tranh đặc biệt của Mỹ tại Việt Nam</h2>
-            
+
             <!-- Hiển thị nhóm đang trả lời -->
             <div class="current-team-display">
                 <strong>🎯 Đội đang trả lời: <span id="answeringTeam4">Đội 1</span></strong><br>
@@ -599,15 +642,17 @@
             <!-- Media ở giữa -->
             <div class="media-container">
                 <div style="text-align: center;">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Maxwell_D._Taylor_official_photo.jpg/220px-Maxwell_D._Taylor_official_photo.jpg" 
-                         alt="Maxwell D. Taylor" 
-                         style="width: 100%; max-width: 300px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); margin-bottom: 15px;"
-                         onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                    <div style="display: none; padding: 20px; background: #f8f9fa; border-radius: 10px; margin: 20px 0;">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Maxwell_D_Taylor_official_portrait.jpg/500px-Maxwell_D_Taylor_official_portrait.jpg"
+                        alt="Maxwell D. Taylor"
+                        style="width: 100%; max-width: 300px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); margin-bottom: 15px;"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div
+                        style="display: none; padding: 20px; background: #f8f9fa; border-radius: 10px; margin: 20px 0;">
                         <p><strong>Ảnh không tải được</strong></p>
                     </div>
-                    <p style="font-weight: bold; color: #667eea; margin-top: 10px;">Đại tướng Maxwell D. Taylor</p>
-                    <p style="font-style: italic; color: #666; font-size: 0.9em;">Vị tướng quan trọng trong Chiến tranh đặc biệt</p>
+                    <p style="font-weight: bold; color: #A0956B; margin-top: 10px;">Đại tướng Maxwell D. Taylor</p>
+                    <p style="font-style: italic; color: #666; font-size: 0.9em;">Vị tướng quan trọng trong Chiến tranh
+                        đặc biệt</p>
                 </div>
             </div>
 
@@ -624,17 +669,18 @@
 
             <!-- Thông báo chuyển đổi -->
             <div class="transition-message">⏱️ Đang chuyển sang vòng đặt cược tiếp theo...</div>
-            
+
             <div id="nextQuestion4Btn" style="display: none;"></div>
         </div>
 
         <!-- Trang câu hỏi 5 -->
         <div id="question5Page" class="page">
             <div class="current-question">Câu hỏi 5/7</div>
-            
+
             <!-- Tên câu hỏi ở trên cùng -->
-            <h2>5. Đáp án cho câu hỏi này gồm 11 chữ cái. Hãy cho biết đây là chính sách nào của Mỹ trong chiến tranh đặc biệt tại Việt Nam</h2>
-            
+            <h2>5. Đáp án cho câu hỏi này gồm 11 chữ cái. Hãy cho biết đây là chính sách nào của Mỹ trong chiến tranh
+                đặc biệt tại Việt Nam</h2>
+
             <!-- Hiển thị nhóm đang trả lời -->
             <div class="current-team-display">
                 <strong>🎯 Đội đang trả lời: <span id="answeringTeam5">Đội 1</span></strong><br>
@@ -645,23 +691,21 @@
             <div class="media-container">
                 <div style="display: flex; gap: 20px; justify-content: center; align-items: center; flex-wrap: wrap;">
                     <div style="flex: 1; min-width: 300px;">
-                        <h4 style="text-align: center; margin-bottom: 10px; color: #667eea;">Ấp Chiến lược</h4>
-                        <img src="https://upload.wikimedia.org/wikipedia/vi/thumb/3/31/Strategic_Hamlet_Program_map.jpg/300px-Strategic_Hamlet_Program_map.jpg" 
-                             alt="Ấp Chiến lược" 
-                             style="width: 100%; max-width: 350px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"
-                             onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <h4 style="text-align: center; margin-bottom: 10px; color: #A0956B;"></h4>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Gvnhamlet.jpg"
+                            style="width: 100%; max-width: 350px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display: none; padding: 20px; background: #f8f9fa; border-radius: 10px;">
-                            <p>Ảnh Ấp Chiến lược không tải được</p>
+                            <p></p>
                         </div>
                     </div>
                     <div style="flex: 1; min-width: 300px;">
-                        <h4 style="text-align: center; margin-bottom: 10px; color: #667eea;">Ngô Đình Nhu</h4>
-                        <img src="https://upload.wikimedia.org/wikipedia/vi/b/b5/Ng%C3%B4_%C4%90%C3%ACnh_Nhu_%E1%BB%9F_dinh_Gia_Long.png" 
-                             alt="Ngô Đình Nhu" 
-                             style="width: 100%; max-width: 350px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"
-                             onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <h4 style="text-align: center; margin-bottom: 10px; color: #A0956B;"></h4>
+                        <img src="https://upload.wikimedia.org/wikipedia/vi/b/b5/Ng%C3%B4_%C4%90%C3%ACnh_Nhu_%E1%BB%9F_dinh_Gia_Long.png"
+                            style="width: 100%; max-width: 350px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display: none; padding: 20px; background: #f8f9fa; border-radius: 10px;">
-                            <p>Ảnh Ngô Đình Nhu không tải được</p>
+                            <p></p>
                         </div>
                     </div>
                 </div>
@@ -683,17 +727,17 @@
 
             <!-- Thông báo chuyển đổi -->
             <div class="transition-message">⏱️ Đang chuyển sang vòng đặt cược tiếp theo...</div>
-            
+
             <div id="nextQuestion5Btn" style="display: none;"></div>
         </div>
 
         <!-- Trang câu hỏi 6 -->
         <div id="question6Page" class="page">
             <div class="current-question">Câu hỏi 6/7</div>
-            
+
             <!-- Tên câu hỏi ở trên cùng -->
             <h2>6. Đâu là thứ để lại nhiều hệ lụy mà Mỹ đã gây ra cho Việt Nam sau chiến tranh</h2>
-            
+
             <!-- Hiển thị nhóm đang trả lời -->
             <div class="current-team-display">
                 <strong>🎯 Đội đang trả lời: <span id="answeringTeam6">Đội 1</span></strong><br>
@@ -702,89 +746,105 @@
 
             <!-- Media ở giữa -->
             <div class="media-container">
-                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; justify-items: center; align-items: center;">
+                <div
+                    style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; justify-items: center; align-items: center;">
                     <div style="text-align: center;">
-                        <img src="https://thanhnien.mediacdn.vn/Uploaded/caotung/2022_08_07/ca-si-mono-2225.jpg" 
-                             alt="Hình ảnh 1" 
-                             style="width: 100%; max-width: 200px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"
-                             onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                        <div style="display: none; width: 200px; height: 150px; background: #f8f9fa; border: 2px dashed #ccc; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin: 0 auto;">
+                        <img src="https://thanhnien.mediacdn.vn/Uploaded/caotung/2022_08_07/ca-si-mono-2225.jpg"
+                            alt="Hình ảnh 1"
+                            style="width: 100%; max-width: 200px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div
+                            style="display: none; width: 200px; height: 150px; background: #f8f9fa; border: 2px dashed #ccc; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin: 0 auto;">
                             <p style="color: #666; font-size: 12px;">Ảnh 1 không tải được</p>
                         </div>
                     </div>
                     <div style="text-align: center;">
-                        <img src="https://png.pngtree.com/png-clipart/20210309/original/pngtree-black-number-2-png-image_5894261.jpg" 
-                             alt="Số 2" 
-                             style="width: 100%; max-width: 120px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"
-                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <div style="display: none; width: 80px; height: 80px; background: #333; color: white; display: flex; align-items: center; justify-content: center; border-radius: 8px; font-size: 48px; font-weight: bold; margin: 0 auto;">2</div>
-                    </div>
-                    <div style="text-align: center;">
-                        <div style="width: 80px; height: 80px; background: #e74c3c; color: white; display: flex; align-items: center; justify-content: center; border-radius: 8px; font-size: 24px; font-weight: bold; margin: 0 auto;">Dioxin</div>
-                    </div>
-                    <div style="text-align: center;">
-                        <img src="https://image-assets.eu-2.volcanic.cloud/api/v1/assets/images/a7a28c050a29c857d31b3b421d4eb1d0?size=600x400>" 
-                             alt="Hình ảnh 4" 
-                             style="width: 100%; max-width: 200px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"
-                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <div style="display: none; width: 80px; height: 80px; background: #f39c12; color: white; display: flex; align-items: center; justify-content: center; border-radius: 8px; font-size: 16px; font-weight: bold; margin: 0 auto; text-align: center;">Hình 4</div>
-                    </div>
-                </div>
-                <div style="text-align: center; margin-top: 15px; font-style: italic; color: #666;">
-                    <p><strong>Hệ lụy để lại từ chiến tranh</strong></p>
-                    <p style="color: #e74c3c;">⚠️ Tác động lâu dài đến môi trường và sức khỏe con người</p>
-                </div>
-            </div>
-
-            <!-- Đáp án đúng và nút bấm ở dưới -->
-            <div class="answer-section">
-                <div class="correct-answer">
-                    <strong>🎯 Đáp án đúng: Chất dioxin</strong>
-                </div>
-                <div class="answer-buttons">
-                    <button class="btn-correct" onclick="answerCorrect(6)">✅ ĐÚNG</button>
-                    <button class="btn-wrong" onclick="answerWrong(6)">❌ SAI</button>
-                </div>
-            </div>
-
-            <!-- Thông báo chuyển đổi -->
-            <div class="transition-message">⏱️ Đang chuyển sang vòng đặt cược tiếp theo...</div>
-            
-            <div id="nextQuestion6Btn" style="display: none;"></div>
-        </div>
-
-        <!-- Trang câu hỏi 7 -->
-        <div id="question7Page" class="page">
-            <div class="current-question">Câu hỏi 7/7</div>
-            
-            <!-- Tên câu hỏi ở trên cùng -->
-            <h2>7. Cho biết đây là sự kiện gì và diễn ra trong khoảng thời gian nào</h2>
-            
-            <!-- Hiển thị nhóm đang trả lời -->
-            <div class="current-team-display">
-                <strong>🎯 Đội đang trả lời: <span id="answeringTeam7">Đội 1</span></strong><br>
-                <strong>💰 Số điểm cược: <span id="betAmount7">50</span> điểm</strong>
-            </div>
-
-            <!-- Media ở giữa -->
-            <div class="media-container">
-                <div style="display: flex; gap: 20px; justify-content: center; align-items: center; flex-wrap: wrap;">
-                    <div style="flex: 1; min-width: 300px; text-align: center;">
-                        <h4 style="margin-bottom: 10px; color: #667eea;">Sự kiện lịch sử</h4>
-                        <div style="width: 100%; max-width: 300px; height: 200px; background: #f8f9fa; border: 2px dashed #ccc; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin: 0 auto;">
-                            <p style="color: #666; font-style: italic;">Hình ảnh sự kiện đảo chính</p>
+                        <img src="https://e7.pngegg.com/pngimages/313/595/png-clipart-x-mark-check-mark-cross-sign-x-mark-miscellaneous-angle.png"
+                            alt="Hình ảnh 2"
+                            style="width: 100%; max-width: 200px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div
+                            style="display: none; width: 200px; height: 150px; background: #f8f9fa; border: 2px dashed #ccc; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin: 0 auto;">
+                            <p style="color: #666; font-size: 12px;">Ảnh 2 không tải được</p>
+                        </div>
+                        <div style="text-align: center;">
+                            <img src="https://png.pngtree.com/png-clipart/20210309/original/pngtree-black-number-2-png-image_5894261.jpg"
+                                alt="Số 2"
+                                style="width: 100%; max-width: 120px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"
+                                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div
+                                style="display: none; width: 80px; height: 80px; background: #333; color: white; display: flex; align-items: center; justify-content: center; border-radius: 8px; font-size: 48px; font-weight: bold; margin: 0 auto;">
+                                2</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div
+                                style="width: 80px; height: 80px; background: #e74c3c; color: white; display: flex; align-items: center; justify-content: center; border-radius: 8px; font-size: 24px; font-weight: bold; margin: 0 auto;">
+                                Dioxin</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <img src="https://image-assets.eu-2.volcanic.cloud/api/v1/assets/images/a7a28c050a29c857d31b3b421d4eb1d0?size=600x400>"
+                                alt="Hình ảnh 4"
+                                style="width: 100%; max-width: 200px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"
+                                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div
+                                style="display: none; width: 80px; height: 80px; background: #f39c12; color: white; display: flex; align-items: center; justify-content: center; border-radius: 8px; font-size: 16px; font-weight: bold; margin: 0 auto; text-align: center;">
+                                Hình 4</div>
                         </div>
                     </div>
-                    <div style="flex: 1; min-width: 300px; text-align: center;">
-                        <h4 style="margin-bottom: 10px; color: #667eea;">Nhân vật liên quan</h4>
-                        <div style="width: 100%; max-width: 300px; height: 200px; background: #f8f9fa; border: 2px dashed #ccc; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin: 0 auto;">
-                            <p style="color: #666; font-style: italic;">Hình ảnh Dương Văn Minh</p>
-                        </div>
+                    <div style="text-align: center; margin-top: 15px; font-style: italic; color: #666;">
+                        <p><strong>Hệ lụy để lại từ chiến tranh</strong></p>
+                        <p style="color: #e74c3c;">⚠️ Tác động lâu dài đến môi trường và sức khỏe con người</p>
                     </div>
                 </div>
-                <div style="text-align: center; margin-top: 15px; font-style: italic; color: #666;">
-                    <p><strong>Sự kiện quan trọng trong lịch sử Việt Nam</strong></p>
-                    <p style="color: #e74c3c;">📅 Một ngày chuyển folding trong lịch sử chính trị</p>
+
+                <!-- Đáp án đúng và nút bấm ở dưới -->
+                <div class="answer-section">
+                    <div class="correct-answer">
+                        <strong>🎯 Đáp án đúng: Chất dioxin</strong>
+                    </div>
+                    <div class="answer-buttons">
+                        <button class="btn-correct" onclick="answerCorrect(6)">✅ ĐÚNG</button>
+                        <button class="btn-wrong" onclick="answerWrong(6)">❌ SAI</button>
+                    </div>
+                </div>
+
+                <!-- Thông báo chuyển đổi -->
+                <div class="transition-message">⏱️ Đang chuyển sang vòng đặt cược tiếp theo...</div>
+
+                <div id="nextQuestion6Btn" style="display: none;"></div>
+            </div>
+
+            <!-- Trang câu hỏi 7 -->
+            <div id="question7Page" class="page">
+                <div class="current-question">Câu hỏi 7/7</div>
+
+                <!-- Tên câu hỏi ở trên cùng -->
+                <h2>7. Cho biết đây là sự kiện gì và diễn ra trong khoảng thời gian nào</h2>
+
+                <!-- Hiển thị nhóm đang trả lời -->
+                <div class="current-team-display">
+                    <strong>🎯 Đội đang trả lời: <span id="answeringTeam7">Đội 1</span></strong><br>
+                    <strong>💰 Số điểm cược: <span id="betAmount7">50</span> điểm</strong>
+                </div>
+
+                <!-- Media ở giữa -->
+                <div class="media-container">
+                    <div
+                        style="display: flex; gap: 20px; justify-content: center; align-items: center; flex-wrap: wrap;">
+                        <div style="flex: 1; min-width: 300px; text-align: center;">
+                            <div style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); 
+                                        border: 2px solid #A0956B; 
+                                        border-radius: 15px; 
+                                        padding: 30px; 
+                                        box-shadow: 0 8px 16px rgba(160, 149, 107, 0.3);
+                                        backdrop-filter: blur(5px);"></div>
+                            <h3 style="color: #8B7765; margin-bottom: 20px; font-size: 1.8em;">📅 Sự kiện lịch sử</h3>
+                            <p style="font-size: 1.4em; color: #5D4E37; font-weight: bold; line-height: 1.6;">
+                                Mời mọi người xem vở kịch sau đây và cho biết đây là sự kiện gì và diễn ra trong khoảng
+                                thời gian nào?
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -801,7 +861,7 @@
 
             <!-- Thông báo chuyển đổi -->
             <div class="transition-message">🎉 Trò chơi kết thúc! Đang chuyển sang trang kết quả...</div>
-            
+
             <div id="nextQuestion7Btn" style="display: none;"></div>
         </div>
 
@@ -816,4 +876,5 @@
 
     <script src="game.js"></script>
 </body>
+
 </html>
