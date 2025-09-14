@@ -10,34 +10,34 @@ let gameState = {
         { name: 'Đội 5', points: 500, bet: 0, hasAnswered: false },
         { name: 'Đội 6', points: 500, bet: 0, hasAnswered: false }
     ],
-    questionResults: [], // Lưu kết quả từng câu hỏi
+    questionResults: [], // Lưu kết quả từng câu hỏi alert
     questions: [
         {
-            minBet: Math.floor(Math.random() * 31) + 10, // 10-40
+            minBet: Math.floor(Math.random() * 51) + 50, // 50-100
             correct: 0 // Chiến lược chiến tranh đặc biệt
         },
         {
-            minBet: Math.floor(Math.random() * 31) + 10,
+            minBet: Math.floor(Math.random() * 51) + 50,
             correct: 0 // Trực thăng vận và thiết xa vận
         },
         {
-            minBet: Math.floor(Math.random() * 31) + 10,
+            minBet: Math.floor(Math.random() * 51) + 50,
             correct: 0 // Sẽ được cập nhật
         },
         {
-            minBet: Math.floor(Math.random() * 31) + 10,
+            minBet: Math.floor(Math.random() * 51) + 50,
             correct: 0 // Sẽ được cập nhật
         },
         {
-            minBet: Math.floor(Math.random() * 31) + 10,
+            minBet: Math.floor(Math.random() * 51) + 50,
             correct: 0 // Sẽ được cập nhật
         },
         {
-            minBet: Math.floor(Math.random() * 31) + 10,
+            minBet: Math.floor(Math.random() * 51) + 50,
             correct: 0 // Sẽ được cập nhật
         },
         {
-            minBet: Math.floor(Math.random() * 31) + 10,
+            minBet: Math.floor(Math.random() * 51) + 50,
             correct: 0 // Sẽ được cập nhật
         }
     ],
@@ -94,7 +94,7 @@ function updateGameStatus() {
             statusElement.textContent = 'Chào mừng đến với Game 2: Đặt Cược Trí Tuệ';
             break;
         case 'rules':
-            statusElement.textContent = 'Đang xem luật chơi';
+            statusElement.textContent = 'Luật chơi';
             break;
         case 'betting':
             statusElement.textContent = `Vòng đặt cược - Câu ${gameState.currentQuestion + 1}/7`;
@@ -263,7 +263,6 @@ function answerCorrect(questionNum) {
     let wrongTeams = [];
     gameState.currentTurnOrder.forEach((teamIndex, turnIndex) => {
         if (turnIndex < gameState.answeringTeamIndex && gameState.teams[teamIndex].hasAnswered) {
-            gameState.teams[teamIndex].points -= gameState.teams[teamIndex].bet;
             wrongTeams.push(gameState.teams[teamIndex].name);
         }
     });
@@ -343,7 +342,7 @@ function resetTeamsForNewQuestion() {
     gameState.currentTurnOrder = [];
 }
 
-// Results phase
+// Results phase answerWrong
 function showResults() {
     showPage('resultsPage');
     

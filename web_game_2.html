@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game 2: Đấu Giá Trí Tuệ</title>
+    <!-- IMPORT FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+
+    <!-- IMPORT CSS FILE -->
+    <link rel="stylesheet" href="style_game_2.css">
+</head>
+
+<body>
+    <div class="status-bar"
+        style="background: rgba(212, 196, 160, 0.3); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(160, 149, 107, 0.3);">
+        <div style="text-align: center;">
+            <span id="gameStatus" style="color: #8B7765; font-weight: 600;">Chào mừng đến với Game 2: Đấu Giá Trí
+                Tuệ</span>
+        </div>
+    </div>
+
+    <div class="container game-container">
+        <!-- Trang chào mừng Đấu Giá -->
+        <div id="welcomePage" class="page active">
+            <h1>GAME 2: ĐẤU GIÁ TRÍ TUỆ!</h1>
+            <h1>🎯🎯🎯🎯🎯</h1>
+            <div class="welcome-text">
+                Đấu giá giành quyền trả lời!<br>
+                Đội nhiều điểm nhất là đội chiến thắng!
+            </div>
+            <button class="btn" onclick="showRules()">📜 Luật Chơi</button>
+            <button class="btn" onclick="startGame()">🚀 Bắt Đầu</button>
+        </div>
+
+        <!-- Trang luật chơi question2.png -->
+        <div id="rulesPage" class="page">
+            <h2>📜 LUẬT CHƠI GAME 2</h2>
+            <div class="rules">
+                <h3>1. Giành quyền trả lời:</h3>
+                <ul>
+                    <li>Các đội bắt đầu với 500 điểm vốn, đấu giá trong thời gian 30 giây;</li>
+                    <li>Đội nào đấu giá cao nhất sẽ giành quyền trả lời;</li>
+                    <li>Nếu trả lời sai, cơ hội được chuyển cho đội đặt giá gần nhất.</li>
+                </ul>
+
+                <h3>2. Đấu Giá:</h3>
+                <ul>
+                    <li>Mức cược tối thiểu: bằng mức cược sàn.</li>
+                    <li>Mức cược tối đa: toàn bộ số điểm hiện có.</li>
+                    <li>Thời gian Đấu Giá: 30 giây</li>
+                </ul>
+
+                <h3>3. Trả lời và tính điểm:</h3>
+                <ul>
+                    <li>Trả lời <strong>ĐÚNG</strong>: Nhận được gấp đôi (x2) số điểm đã cược.</li>
+                    <li>Trả lời <strong>SAI</strong>: Mất toàn bộ số điểm đã cược.</li>
+                </ul>
+
+                <h3>4. Kết thúc game:</h3>
+                <ul>
+                    <li>Đội có tổng điểm cao nhất: <strong>+3 điểm</li>
+                    <li>Đội nhì: <strong>+2 điểm</strong></li>
+                    <li>Đội ba: <strong>+1 điểm</strong></li>
+                </ul>
+            </div>
+            <button class="btn" onclick="showWelcome()">⬅️ Quay lại</button>
+            <button class="btn" onclick="startGame()">🚀 Bắt Đầu</button>
+        </div>
+
+        <!-- Trang Đấu Giá -->
+        <div id="bettingPage" class="page">
+            <div class="current-question">Câu hỏi <span id="currentQuestionNum">1</span>/7</div>
+            <h2>💰 VÒNG ĐẤU GIÁ</h2>
+            <div class="timer" id="bettingTimer">30</div>
+            <div style="margin-bottom: 20px;">
+                <strong>Mức cược sàn: <span id="minBet">20</span> điểm</strong>
+            </div>
+            <div class="teams-grid" id="teamsGrid"></div>
+            <button class="btn" id="confirmBetsBtn" onclick="confirmBets()" disabled>⏰ Chờ hết giờ...</button>
+        </div>
+
+        <!-- Trang câu hỏi 1 -->
+        <div id="question1Page" class="page">
+            <div class="current-question">Câu hỏi 1/7</div>
+
+            <!-- Tên câu hỏi ở trên cùng -->
+            <h2>1. Xem video sau và cho biết chiến dịch gì đã được nhắc đến.</h2>
+
+            <!-- Hiển thị nhóm đang trả lời -->
+            <div class="current-team-display">
+                <strong>🎯 Đội đang trả lời: <span id="answeringTeam1">Đội 1</span></strong><br>
+                <strong>💰 Số điểm cược: <span id="betAmount1">50</span> điểm</strong>
+            </div>
+
+            <!-- Media ở giữa -->
+            <div class="media-container">
+                <video width="100%" height="400" controls>
+                    <source src="assets/video/clip_1.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+
+            <!-- Đáp án đúng và nút bấm ở dưới -->
+            <div class="answer-section">
+                <div class="correct-answer">
+                    <strong>🎯 Đáp án đúng: Chiến lược chiến tranh đặc biệt</strong>
+                </div>
+                <div class="answer-buttons">
+                    <button class="btn-correct" onclick="answerCorrect(1)">✅ ĐÚNG</button>
+                    <button class="btn-wrong" onclick="answerWrong(1)">❌ SAI</button>
+                </div>
+            </div>
+
+            <!-- Thông báo chuyển đổi -->
+            <div class="transition-message">⏱️ Đang chuyển sang vòng đặt cược tiếp theo...</div>
+
+            <!-- Nút tự động ẩn vì game sẽ tự chuyển -->
+            <div id="nextQuestion1Btn" style="display: none;"></div>
+        </div>
+
+        <!-- Trang câu hỏi 2 -->
+        <div id="question2Page" class="page">
+            <div class="current-question">Câu hỏi 2/7</div>
+
+            <!-- Tên câu hỏi ở trên cùng -->
+            <h2>2. Hai chiến thuật quân sự mà Mỹ áp dụng trong Chiến tranh đặc biệt là gì?</h2>
+
+            <!-- Hiển thị nhóm đang trả lời -->
+            <div class="current-team-display">
+                <strong>🎯 Đội đang trả lời: <span id="answeringTeam2">Đội 1</span></strong><br>
+                <strong>💰 Số điểm cược: <span id="betAmount2">50</span> điểm</strong>
+            </div>
+
+            <!-- Media ở giữa -->
+            <div class="media-container">
+                <div style="display: flex; gap: 20px; justify-content: center; align-items: center; flex-wrap: wrap;">
+                    <div style="flex: 1; min-width: 300px;">
+                        <h4 style="text-align: center; margin-bottom: 10px; color: #A0956B;"></h4>
+                        <img src="assets/img/truc_thang_van.jpg"
+                            style="width: 100%; max-width: 400px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                    </div>
+                    <div style="flex: 1; min-width: 300px;">
+                        <h4 style="text-align: center; margin-bottom: 10px; color: #A0956B;"></h4>
+                        <img src="assets/img/thiet_xa_van.jpg"
+                            style="width: 100%; max-width: 400px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Đáp án đúng và nút bấm ở dưới -->
+            <div class="answer-section">
+                <div class="correct-answer">
+                    <strong>🎯 Đáp án đúng: Trực thăng vận và thiết xa vận</strong>
+                </div>
+                <div class="answer-buttons">
+                    <button class="btn-correct" onclick="answerCorrect(2)">✅ ĐÚNG</button>
+                    <button class="btn-wrong" onclick="answerWrong(2)">❌ SAI</button>
+                </div>
+            </div>
+
+            <!-- Thông báo chuyển đổi -->
+            <div class="transition-message">⏱️ Đang chuyển sang vòng đặt cược tiếp theo...</div>
+
+            <div id="nextQuestion2Btn" style="display: none;"></div>
+        </div>
+
+        <!-- Trang câu hỏi 3 -->
+        <div id="question3Page" class="page">
+            <div class="current-question">Câu hỏi 3/7</div>
+
+            <!-- Tên câu hỏi ở trên cùng -->
+            <h2>3. Bài hát sau nói về đội quân nào?</h2>
+
+            <!-- Hiển thị nhóm đang trả lời -->
+            <div class="current-team-display">
+                <strong>🎯 Đội đang trả lời: <span id="answeringTeam3">Đội 1</span></strong><br>
+                <strong>💰 Số điểm cược: <span id="betAmount3">50</span> điểm</strong>
+            </div>
+
+            <!-- Media ở giữa -->
+            <div class="media-container">
+                <video width="100%" height="400" controls>
+                    <source src="assets/video/clip_3.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+
+            <!-- Đáp án đúng và nút bấm ở dưới -->
+            <div class="answer-section">
+                <div class="correct-answer">
+                    <strong>🎯 Đáp án đúng: Quân đội Sài Gòn</strong>
+                </div>
+                <div class="answer-buttons">
+                    <button class="btn-correct" onclick="answerCorrect(3)">✅ ĐÚNG</button>
+                    <button class="btn-wrong" onclick="answerWrong(3)">❌ SAI</button>
+                </div>
+            </div>
+
+            <!-- Thông báo chuyển đổi -->
+            <div class="transition-message">⏱️ Đang chuyển sang vòng đặt cược tiếp theo...</div>
+
+            <div id="nextQuestion3Btn" style="display: none;"></div>
+        </div>
+
+        <!-- Trang câu hỏi 4 -->
+        <div id="question4Page" class="page">
+            <div class="current-question">Câu hỏi 4/7</div>
+
+            <!-- Tên câu hỏi ở trên cùng -->
+            <h2>4. Hãy cho biết vị đại tướng trên gợi nhắc đến lực lượng gì trong chiến tranh đặc biệt?</h2>
+
+            <!-- Hiển thị nhóm đang trả lời -->
+            <div class="current-team-display">
+                <strong>🎯 Đội đang trả lời: <span id="answeringTeam4">Đội 1</span></strong><br>
+                <strong>💰 Số điểm cược: <span id="betAmount4">50</span> điểm</strong>
+            </div>
+
+            <!-- Media ở giữa -->
+            <div class="media-container">
+                <div style="text-align: center;">
+                    <img src="assets/img/maxwell_d_taylor.jpg"
+                        alt="Maxwell D. Taylor"
+                        style="width: 100%; max-width: 300px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); margin-bottom: 15px;"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div
+                        style="display: none; padding: 20px; background: #f8f9fa; border-radius: 10px; margin: 20px 0;">
+                        <p><strong>Ảnh không tải được</strong></p>
+                    </div>
+                    <p style="font-weight: bold; color: #A0956B; margin-top: 10px;">Đại tướng Maxwell D. Taylor</p>
+                </div>
+            </div>
+
+            <!-- Đáp án đúng và nút bấm ở dưới -->
+            <div class="answer-section">
+                <div class="correct-answer">
+                    <strong>🎯 Đáp án đúng: Lực lượng chỉ huy quân đội Sài Gòn</strong>
+                </div>
+                <div class="answer-buttons">
+                    <button class="btn-correct" onclick="answerCorrect(4)">✅ ĐÚNG</button>
+                    <button class="btn-wrong" onclick="answerWrong(4)">❌ SAI</button>
+                </div>
+            </div>
+
+            <!-- Thông báo chuyển đổi -->
+            <div class="transition-message">⏱️ Đang chuyển sang vòng đặt cược tiếp theo...</div>
+
+            <div id="nextQuestion4Btn" style="display: none;"></div>
+        </div>
+
+        <!-- Trang câu hỏi 5 -->
+        <div id="question5Page" class="page">
+            <div class="current-question">Câu hỏi 5/7</div>
+
+            <!-- Tên câu hỏi ở trên cùng -->
+            <h2>5. Hãy cho biết đây là chính sách nào của Mỹ trong chiến tranh
+                đặc biệt tại Việt Nam?</h2>
+
+            <!-- Hiển thị nhóm đang trả lời -->
+            <div class="current-team-display">
+                <strong>🎯 Đội đang trả lời: <span id="answeringTeam5">Đội 1</span></strong><br>
+                <strong>💰 Số điểm cược: <span id="betAmount5">50</span> điểm</strong>
+            </div>
+
+            <!-- Media ở giữa -->
+            <div class="media-container">
+                <div style="display: flex; gap: 20px; justify-content: center; align-items: center; flex-wrap: wrap;">
+                    <div style="flex: 1; min-width: 300px;">
+                        <h4 style="text-align: center; margin-bottom: 10px; color: #A0956B;"></h4>
+                        <img src="assets/img/ap_chien_luoc.jpg"
+                            style="width: 100%; max-width: 350px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                    </div>
+                    <div style="flex: 1; min-width: 300px;">
+                        <h4 style="text-align: center; margin-bottom: 10px; color: #A0956B;"></h4>
+                        <img src="assets/img/ngo_dinh_nhu.png"
+                            style="width: 100%; max-width: 350px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Đáp án đúng và nút bấm ở dưới -->
+            <div class="answer-section">
+                <div class="correct-answer">
+                    <strong>🎯 Đáp án đúng: Ấp chiến lược</strong>
+                </div>
+                <div class="answer-buttons">
+                    <button class="btn-correct" onclick="answerCorrect(5)">✅ ĐÚNG</button>
+                    <button class="btn-wrong" onclick="answerWrong(5)">❌ SAI</button>
+                </div>
+            </div>
+
+            <!-- Thông báo chuyển đổi -->
+            <div class="transition-message">⏱️ Đang chuyển sang vòng đặt cược tiếp theo...</div>
+
+            <div id="nextQuestion5Btn" style="display: none;"></div>
+        </div>
+
+        <!-- Trang câu hỏi 6 -->
+        <div id="question6Page" class="page">
+            <div class="current-question">Câu hỏi 6/7</div>
+
+            <!-- Tên câu hỏi ở trên cùng -->
+            <h2>6. Đây là thứ đã để lại nhiều hệ lụy cho Việt Nam sau chiến tranh với Mỹ</h2>
+
+            <!-- Hiển thị nhóm đang trả lời -->
+            <div class="current-team-display">
+                <strong>🎯 Đội đang trả lời: <span id="answeringTeam6">Đội 1</span></strong><br>
+                <strong>💰 Số điểm cược: <span id="betAmount6">50</span> điểm</strong>
+            </div>
+
+            <!-- Media ở giữa -->
+            <div class="media-container">
+                <div style="display: flex; gap: 30px; justify-content: center; align-items: center; flex-wrap: wrap; padding: 40px 20px; background: rgba(250, 248, 240, 0.3); border-radius: 20px; margin: 20px 0; backdrop-filter: blur(5px);">
+                    <img src="assets/img/dioxin_2.png"
+                        style="width: 600px; height: 180px; object-fit: cover; border-radius: 15px; box-shadow: 0 6px 12px rgba(0,0,0,0.15);">
+                </div>
+            </div>
+
+            <!-- Đáp án đúng và nút bấm ở dưới -->
+            <div class="answer-section">
+                <div class="correct-answer">
+                    <strong>🎯 Đáp án đúng: Chất dioxin</strong>
+                </div>
+                <div class="answer-buttons">
+                    <button class="btn-correct" onclick="answerCorrect(6)">✅ ĐÚNG</button>
+                    <button class="btn-wrong" onclick="answerWrong(6)">❌ SAI</button>
+                </div>
+            </div>
+
+            <!-- Thông báo chuyển đổi -->
+            <div class="transition-message">⏱️ Đang chuyển sang vòng đặt cược tiếp theo...</div>
+
+            <div id="nextQuestion6Btn" style="display: none;"></div>
+        </div>
+
+        <!-- Trang câu hỏi 7 -->
+        <div id="question7Page" class="page">
+            <div class="current-question">Câu hỏi 7/7</div>
+
+            <!-- Tên câu hỏi ở trên cùng -->
+            <h2>7. Cho biết đây là sự kiện gì và diễn ra trong khoảng thời gian nào?</h2>
+
+            <!-- Hiển thị nhóm đang trả lời -->
+            <div class="current-team-display">
+                <strong>🎯 Đội đang trả lời: <span id="answeringTeam7">Đội 1</span></strong><br>
+                <strong>💰 Số điểm cược: <span id="betAmount7">50</span> điểm</strong>
+            </div>
+
+            <!-- Media ở giữa -->
+            <div class="media-container">
+                <div style="text-align: center; padding: 40px 20px;">
+                    <p style="font-size: 18px; color: #A0956B; font-weight: 500; line-height: 1.6;">
+                        Các bạn hãy xem vở kịch sau và trả lời câu hỏi.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Đáp án đúng và nút bấm ở dưới -->
+            <div class="answer-section">
+                <div class="correct-answer">
+                    <strong>🎯 Đáp án đúng: Dương Văn Minh đảo chính lật đổ chính quyền Diệm (1/11 - 2/11/1963)</strong>
+                </div>
+                <div class="answer-buttons">
+                    <button class="btn-correct" onclick="answerCorrect(7)">✅ ĐÚNG</button>
+                    <button class="btn-wrong" onclick="answerWrong(7)">❌ SAI</button>
+                </div>
+            </div>
+
+            <!-- Thông báo chuyển đổi -->
+            <div class="transition-message">🎉 Trò chơi kết thúc! Đang chuyển sang trang kết quả...</div>
+
+            <div id="nextQuestion7Btn" style="display: none;"></div>
+        </div>
+
+        <!-- Trang kết quả -->
+        <div id="resultsPage" class="page">
+            <h2>🏆 KẾT QUẢ CUỐI GAME</h2>
+            <div class="leaderboard" id="leaderboard"></div>
+            <button class="btn" onclick="resetGame()">🔄 Chơi lại</button>
+            <button class="btn" onclick="showWelcome()">🏠 Về trang chủ</button>
+        </div>
+    </div>
+
+    <!-- IMPORT JS FILE -->
+    <script src="game_2.js"></script>
+</body>
+
+</html>
