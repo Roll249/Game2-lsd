@@ -6,9 +6,9 @@ let gameState = {
         { name: 'Đội 1', points: 500, bet: 0, hasAnswered: false },
         { name: 'Đội 2', points: 500, bet: 0, hasAnswered: false },
         { name: 'Đội 3', points: 500, bet: 0, hasAnswered: false },
-        { name: 'Đội 4', points: 500, bet: 0, hasAnswered: false },
         { name: 'Đội 5', points: 500, bet: 0, hasAnswered: false },
-        { name: 'Đội 6', points: 500, bet: 0, hasAnswered: false }
+        { name: 'Đội 6', points: 500, bet: 0, hasAnswered: false },
+        { name: 'Đội 7', points: 500, bet: 0, hasAnswered: false }
     ],
     questionResults: [], // Lưu kết quả từng câu hỏi alert
     questions: [
@@ -382,9 +382,9 @@ function resetGame() {
             { name: 'Đội 1', points: 500, bet: 0, hasAnswered: false },
             { name: 'Đội 2', points: 500, bet: 0, hasAnswered: false },
             { name: 'Đội 3', points: 500, bet: 0, hasAnswered: false },
-            { name: 'Đội 4', points: 500, bet: 0, hasAnswered: false },
             { name: 'Đội 5', points: 500, bet: 0, hasAnswered: false },
-            { name: 'Đội 6', points: 500, bet: 0, hasAnswered: false }
+            { name: 'Đội 6', points: 500, bet: 0, hasAnswered: false },
+            { name: 'Đội 7', points: 500, bet: 0, hasAnswered: false }
         ],
         questions: gameState.questions.map(q => ({
             ...q,

@@ -2,7 +2,13 @@
   "permissions": {
     "allow": [
       "Read(//c/Users/khang/OneDrive - National Economics University/Pictures/Screenshots/**)",
-      "Bash(copy:*)"
+      "Bash(copy:*)",
+      "Bash(git add:*)",
+      "Bash(git rm:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(git pull:*)",
+      "Bash(git rebase:*)"
     ],
     "deny": [],
     "ask": []
